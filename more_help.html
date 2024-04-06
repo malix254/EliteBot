@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Help</title>
+</head>
+<body>
+    <p>Hi {{ user_name }}, here are some questions you can ask:</p>
+    <form action="/chat" method="post">
+        <input type="hidden" name="user_name" value="{{ user_name }}">
+        <button type="submit" name="question" value="When is the school fees payments deadline?">When is the school fees payments deadline?</button><br>
+        <button type="submit" name="question" value="When is the deadline for unit registration?">When is the deadline for unit registration?</button><br>
+        <button type="submit" name="question" value="When will last semester's results be uploaded in the institution's portal?">When will last semester's results be uploaded in the institution's portal?</button><br>
+        <button type="submit" name="question" value="What should I do if I have missing marks?">What should I do if I have missing marks?</button>
+    </form>
+    <form action="/live_agent" method="post">
+        <input type="hidden" name="user_name" value="{{ user_name }}">
+        <button type="submit">Live Agent</button>
+    </form>
+</body>
+</html>

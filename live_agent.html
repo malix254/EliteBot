@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Agent</title>
+</head>
+<body>
+    <p>Hi {{ user_name }}, please select how you'd like to contact the live agent:</p>
+    <form action="/redirect" method="post">
+        <input type="hidden" name="user_name" value="{{ user_name }}">
+        <button type="submit" name="contact_method" value="email">Email</button>
+        <button type="submit" name="contact_method" value="call">Call</button>
+        <button type="submit" name="contact_method" value="whatsapp">WhatsApp</button>
+    </form>
+</body>
+</html>
