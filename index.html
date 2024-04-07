@@ -1,15 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite University ChatBot</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Custom hamburger styles */
+    .hamburger {
+      width: 24px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+    }
+  </style>
 </head>
-<body>
-    <form action="/more_help" method="post">
-        <label for="user_name">Hello, my name is Grit. What's your name?</label>
-        <input type="text" id="user_name" name="user_name" required>
-        <input type="submit" value="Submit">
-    </form>
+<body class="bg-gray-100">
+
+<div class="container mx-auto p-4">
+  <div class="header flex justify-between items-center bg-gray-800 text-white p-4 rounded-t-lg">
+    <!-- Image -->
+    <img src="https://img.freepik.com/free-photo/front-view-stacked-books-graduation-cap-diploma-education-day_23-2149241011.jpg?w=740" alt="University Image" class="w-12 h-12 rounded-full mr-2">
+    <!-- University name -->
+    <div class="logo text-xl font-bold">Elite University</div>
+    <!-- Hamburger menu for profile options -->
+    <div class="hamburger-menu cursor-pointer" onclick="toggleProfileOptions()">
+      <div class="hamburger"></div>
+      <div class="hamburger"></div>
+      <div class="hamburger"></div>
+    </div>
+  </div>
+
+  <!-- Profile options -->
+  <div class="profile-options hidden" id="profileOptions">
+    <div class="flex flex-col gap-2">
+        <br>
+      <button class="btn btn-primary" onclick="showLogin()">Log In</button>
+      <button class="btn btn-primary" onclick="showSignUp()">Sign Up</button>
+      <button class="btn btn-primary" onclick="forgotPassword()">Forgot Password</button>
+    </div>
+  </div>
+
+  <div class="chat-container bg-white rounded-lg shadow-md mt-4 p-4" id="chat-container">
+    <div id="chat-box">
+      <div class="flex items-center mb-4">
+        <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740" alt="Avatar" class="w-12 h-12 rounded-full mr-2">
+        <div class="chat-message bg-gray-200 p-2 rounded-lg">Hey! welcome to Elite University! What can I do for you today?</div>
+      </div>
+      <div class="chat-options">
+        <button class="btn btn-primary mb-2" onclick="selectOption(1)">When is the school fees payments deadline?</button>
+        <button class="btn btn-primary mb-2" onclick="selectOption(2)">When is the deadline for unit registration?</button>
+        <button class="btn btn-primary mb-2" onclick="selectOption(3)">When will last semester's results be uploaded in the institution's portal?</button>
+        <button class="btn btn-primary mb-2" onclick="selectOption(4)">What should I do if I have missing marks?</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mx-auto p-4">
+  <div class="header flex justify-between items-center bg-gray-800 text-white p-4 rounded">
+   
+     <p>&copy; 2024 Elite University. All rights reserved.</p>
+    <!-- Hamburger menu for profile options -->
+   </div>
+
+
+
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<script>
+ function selectOption(option) {
+  const chatBox = document.getElementById('chat-box');
+  const chatContainer = document.getElementById('chat-container');
+
+  switch (option) {
+    case 1:
+      chatBox.innerHTML += `
+        <div class="flex items-center mb-4">
+          <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740" alt="Avatar" class="w-12 h-12 rounded-full mr-2">
+          <div class="chat-message bg-gray-200 p-2 rounded-lg">The school fees payments deadline is from 10th to 15th January.</div>
+        </div>
+        <div class="chat-options">
+          <button class="btn btn-primary mb-2" onclick="continueChat()">Continue</button>
+          <button class="btn btn-primary mb-2" onclick="exitChat()">Exit</button>
+        </div>
+      `;
+      break;
+    case 2:
+      chatBox.innerHTML += `
+        <div class="flex items-center mb-4">
+          <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740" alt="Avatar" class="w-12 h-12 rounded-full mr-2">
+          <div class="chat-message bg-gray-200 p-2 rounded-lg">The deadline for unit registration is on 25th March.</div>
+        </div>
+        <div class="chat-options">
+          <button class="btn btn-primary mb-2" onclick="continueChat()">Continue</button>
+          <button class="btn btn-primary mb-2" onclick="exitChat()">Exit</button>
+        </div>
+      `;
+      break;
+    case 3:
+      chatBox.innerHTML += `
+        <div class="flex items-center mb-4">
+          <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740" alt="Avatar" class="w-12 h-12 rounded-full mr-2">
+          <div class="chat-message bg-gray-200 p-2 rounded-lg">Last semester's results will be uploaded in the institution's portal from 15th to 27th February.</div>
+        </div>
+        <div class="chat-options">
+          <button class="btn btn-primary mb-2" onclick="continueChat()">Continue</button>
+          <button class="btn btn-primary mb-2" onclick="exitChat()">Exit</button>
+        </div>
+      `;
+      break;
+    case 4:
+      chatBox.innerHTML += `
+        <div class="flex items-center mb-4">
+          <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740" alt="Avatar" class="w-12 h-12 rounded-full mr-2">
+          <div class="chat-message bg-gray-200 p-2 rounded-lg">If you have missing marks, please visit the examination department in your faculty.</div>
+        </div>
+        <div class="chat-options">
+          <button class="btn btn-primary mb-2" onclick="continueChat()">Continue</button>
+          <button class="btn btn-primary mb-2" onclick="exitChat()">Exit</button>
+        </div>
+      `;
+      break;
+    case 5:
+      chatBox.innerHTML += `
+        <div class="flex items-center mb-4">
+          <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740" alt="Avatar" class="w-12 h-12 rounded-full mr-2">
+          <div class="chat-message bg-gray-200 p-2 rounded-lg">Connecting you to a live agent. Please hold for a moment.</div>
+        </div>
+        <div class="flex items-center mb-4">
+          <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740" alt="Avatar" class="w-12 h-12 rounded-full mr-2">
+          <div class="chat-message bg-gray-200 p-2 rounded-lg">Please choose a communication channel to connect with the live agent:</div>
+        </div>
+        <div class="chat-options">
+          <button class="btn btn-primary mb-2" onclick="call()">Call</button>
+          <button class="btn btn-primary mb-2" onclick="sendTelegram()">Telegram</button>
+          <button class="btn btn-primary mb-2" onclick="sendWhatsApp()">WhatsApp</button>
+          <button class="btn btn-primary mb-2" onclick="sendEmail()">Email</button>
+          <button class="btn btn-primary mb-2" onclick="sendInstagram()">Instagram</button>
+        </div>
+      `;
+      setTimeout(() => {
+        chatBox.innerHTML += `
+          <div class="flex items-center mb-4">
+            <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740" alt="Avatar" class="w-12 h-12 rounded-full mr-2">
+            <div class="chat-message bg-gray-200 p-2 rounded-lg">[Transfer to live agent]</div>
+          </div>
+        `;
+      }, 2000); // Simulating transfer delay
+      break;
+    default:
+      break;
+  }
+
+  // Scroll to bottom of chat container
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+ function continueChat() {
+  const chatBox = document.getElementById('chat-box');
+  chatBox.innerHTML += `
+    <div class="flex items-center mb-4">
+      <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740" alt="Avatar" class="w-12 h-12 rounded-full mr-2">
+      <div class="chat-message bg-gray-200 p-2 rounded-lg">What else can I help you with?</div>
+    </div>
+    <div class="chat-options">
+      <button class="btn btn-primary mb-2" onclick="displayOptions()">Show Options</button>
+      <button class="btn btn-primary mb-2" onclick="selectOption(5)">Live agent</button>
+    </div>
+  `;
+}
+
+function displayOptions() {
+  const chatBox = document.getElementById('chat-box');
+  chatBox.innerHTML += `
+    <div class="chat-options">
+      <button class="btn btn-primary mb-2" onclick="selectOption(1)">When is the school fees payments deadline?</button>
+      <button class="btn btn-primary mb-2" onclick="selectOption(2)">When is the deadline for unit registration?</button>
+      <button class="btn btn-primary mb-2" onclick="selectOption(3)">When will last semester's results be uploaded in the institution's portal?</button>
+      <button class="btn btn-primary mb-2" onclick="selectOption(4)">What should I do if I have missing marks?</button>
+    </div>
+  `;
+}
+
+function exitChat() {
+  const chatBox = document.getElementById('chat-box');
+  chatBox.innerHTML = `
+    <div class="chat-message">Thank you for using our service. Have a great day!</div>
+  `;
+}
+
+
+  function call() {
+    window.location.href = 'tel:+254743269238';
+  }
+
+  function sendTelegram() {
+    window.open('https://t.me/+254743269238');
+  }
+
+  function sendWhatsApp() {
+    window.open('https://wa.me/+254743269238');
+  }
+
+  function sendEmail() {
+    window.location.href = 'mailto:griffinskirimimbae@gmail.com';
+  }
+
+  function sendInstagram() {
+    window.open('https://www.instagram.com/hey_strange.r/');
+  }
+
+  function toggleProfileOptions() {
+    var profileOptions = document.getElementById("profileOptions");
+    profileOptions.classList.toggle("hidden");
+  }
+
+  function showLogin() {
+    // Your login function implementation
+  }
+
+  function showSignUp() {
+    // Your signup function implementation
+  }
+
+  function forgotPassword() {
+    // Your forgot password function implementation
+  }
+</script>
+
 </body>
 </html>
