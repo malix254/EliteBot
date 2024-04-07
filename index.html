@@ -16,10 +16,52 @@
       background-color: white;
       margin: 4px 0;
     }
+
+    /* Custom widget styles */
+    .chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    /* Hide chat container by default */
+    #chat-container {
+      display: none;
+    }
+    
+    .image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container:hover .image-description {
+  opacity: 1;
+}
+
   </style>
 </head>
 <body class="bg-gray-100">
-
+<!-- Widget for the chatbot -->
+<div class="chat-widget">
+    <button class="btn btn-primary" onclick="toggleChat()">Open Chat</button>
+  </div>
+  
 <div class="container mx-auto p-4">
   <div class="header flex justify-between items-center bg-gray-800 text-white p-4 rounded-t-lg">
     <!-- Image -->
@@ -33,7 +75,8 @@
       <div class="hamburger"></div>
     </div>
   </div>
-
+  <div class="chat-container bg-white rounded-lg shadow-md mt-4 p-4" >
+ 
   <!-- Profile options -->
   <div class="profile-options hidden" id="profileOptions">
     <div class="flex flex-col gap-2">
@@ -43,9 +86,44 @@
       <button class="btn btn-primary" onclick="forgotPassword()">Forgot Password</button>
     </div>
   </div>
-
-  <div class="chat-container bg-white rounded-lg shadow-md mt-4 p-4" id="chat-container">
-    <div id="chat-box">
+  
+    <!-- Main content -->
+    <div class="container mx-auto p-4" id="main-content">
+        <h1 class="text-3xl font-bold mb-4">Elite University</h1>
+        <p class="mb-6">Elite University is dedicated to providing top-tier education and fostering an environment of academic excellence. With state-of-the-art facilities, world-renowned faculty, and a commitment to student success, we empower our students to reach their full potential and become leaders in their fields.</p>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <div class="image-container">
+            <img src="https://img.freepik.com/free-photo/front-view-stacked-books-graduation-cap-open-book-education-day_23-2149241017.jpg?w=996" alt="Campus Life" class="shadow-lg">
+            <div class="image-description">
+              <p>Campus Life</p>
+            </div>
+          </div>
+          
+          <div class="image-container">
+            <img src="https://img.freepik.com/free-photo/group-diverse-grads-throwing-caps-up-sky_53876-56031.jpg?w=996" alt="Graduation" class="shadow-lg">
+            <div class="image-description">
+              <p>Graduation</p>
+            </div>
+          </div>
+        </div>
+        
+        <br>
+        
+        <p class="mb-6">Our diverse community of students, faculty, and staff come together to create an enriching and inclusive learning environment. Whether you're pursuing undergraduate studies, graduate programs, or professional development courses, Elite University offers a wide range of academic opportunities to suit your interests and career goals.</p>
+        
+        <div class="mt-4">
+          <p class="mb-6">Experience the difference of Elite University and unlock your potential for success. Join us and embark on a journey of discovery, growth, and achievement.</p>
+        </div>
+        
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-6">
+            Get Started
+          </button>
+      </div>
+    
+    </div>
+ <!-- Chat container -->
+<div class="chat-container bg-white rounded-lg shadow-md mt-4 p-4 hidden" id="chat-container">   <div id="chat-box">
       <div class="flex items-center mb-4">
         <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740" alt="Avatar" class="w-12 h-12 rounded-full mr-2">
         <div class="chat-message bg-gray-200 p-2 rounded-lg">Hey! welcome to Elite University! What can I do for you today?</div>
@@ -229,6 +307,19 @@ function exitChat() {
 
   function forgotPassword() {
     // Your forgot password function implementation
+  }
+  function toggleChat() {
+    const mainContent = document.getElementById('main-content');
+    const chatContainer = document.getElementById('chat-container');
+
+    // Toggle visibility of main content and chat container
+    if (mainContent.style.display === 'none' || mainContent.style.display === '') {
+      mainContent.style.display = 'block';
+      chatContainer.style.display = 'none';
+    } else {
+      mainContent.style.display = 'none';
+      chatContainer.style.display = 'block';
+    }
   }
 </script>
 
